@@ -1,0 +1,289 @@
+\section{Grundlagen}
+    \begin{defn}[Cantor 1895] Eine Menge ist eine Zusammenfassung
+        von wohlbestimmten und wohlunterschiedenen Objekten zu einem Ganzen. Die Objekte
+        heißen Elemente der Menge. \\
+        Das bedeutet, dass ein Element entweder in der Menge liegt oder nicht und dass jedes 
+        Element höchstens einmal in einer Menge vorkommt. \\
+        Für ein Element $x$, das in einer Menge $M$ liegt, schreiben wir $x\in M$, sonst $x\notin M$. Wir schreiben
+        $\emptyset=\{\}$ für die Menge, die kein Element enthält.
+    \end{defn}
+    \begin{defn}
+        Seien $M,N$ Mengen, wir schreiben
+        \begin{enumerate}[(a)]
+            \item $M\cup N\coloneqq \{x:x\in M \text{ oder } x\in N\}$, das heißt die Vereinigung von $M$ und $N$.
+            \item $M\cap N\coloneqq \{ x:x\in M \ \text{und} \ x\in N\}$, das heißt der Durschnitt von $M$ und $N$.
+            \item $M\setminus N\coloneqq \{ x: x\in M \text{ und } x\notin N\}$, das heißt die (relative) Differenz von $M$ und $N$.
+            \item $M$ und $N$ heißen disjunkt, falls $M\cap N=\emptyset$.
+        \end{enumerate}
+    \end{defn}
+    Wir wollen nun Aussagen formalisieren. Eine Aussage ist ein Sachverhalt, von dem entweder Wahrheit oder Falschheit ausgesagt werden kann. Der Wahrheitswert
+    einer zusammgesetzten Aussage ist eindeutig durch die Wahrheitswerte seiner Teilaussagen festgelegt. 
+    \begin{defn}[Aussagen] Seien $A,B$ Aussagen. Wir definieren die Verknüpfungen mittels Wahrheitstabellen. 
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{ccccc}\toprule
+            A & B & A$\land$ B & A$\lor$B & A$\implies$ B \\ \midrule 
+            w & w & w & w & w \\ 
+            w & f & f & w & f \\
+            f & w & f & w & w \\
+            f & f & f & f & w \\ \bottomrule
+        \end{tabular}
+    \end{table}
+    \\ Ferner sage wir $A$, $B$ sind äquivalent, in Zeichen $A\Leftrightarrow B$, falls $(A\implies B) \land (B\implies A)$.
+    \end{defn}
+    \begin{defn}[Teilmengen] $M,N$ Mengen, wir sagen $M$ ist eine Teilmenge von $N$, Notation: $M\subset N$, falls $x\in M\Rightarrow x\in N$.
+    \end{defn}
+    \begin{defn}[Quantoren] Wir schreiben abkürzend $\forall$ als \glqq für alle\grqq{}, sowie $\exists$ für \glqq es gibt/es existiert\grqq{} und $\exists !$ für \glqq es gibt genau ein\grqq{}.
+    \end{defn}
+    \begin{defn}
+        $M,N$ Mengen, wir definieren das kartesische Produkt als
+        \[
+        M \times N \coloneqq \{(m,n) : m\in M, n\in N\}    
+        \]
+    Eine Teilmenge $R\subset M\times N$ nennen wir Relation. Eine Relation $R\subset M\times N$ heißt rechtseindeutig, falls $\forall x\in M$: es existiert höchstens ein $y\in N:(x,y)\in R$.
+    Sie heißt linkstotal, falls $\forall x\in M$: es gibt mindestens ein $y\in N:(x,y)\in R$
+    \end{defn}
+    \begin{defn}[Abbildungen]
+        $M,N$ Mengen. Eine Abbildung $f$ zwischen $M,N$ ist eine Zuordnung, die allen Elementen von $M$ genau ein Element von $N$ zuordnet. 
+        In anderen Worten können wir jede linkstotale, rechtseindeutige Relation $R\subset M\times N$ als Abbildung auffassen und umgekehrt.
+    \end{defn}
+    \begin{defn}
+        $f:M\to N$ eine Abbildung, wir definieren 
+        \begin{enumerate}[(a)]
+            \item $\im f = \{ n\in N \mid \exists m\in M : f(m) =n\}\subset N$
+            \item $f^{-1}(B) \coloneqq \{x\in M: f(x)\in B\}\subset M$ für alle $B\subset N$
+            \item Für $A\subset M$ definieren wir die Einschränkung von $f$ auf $A$, Notation: $f\mid_A$, durch $f\mid_A:A\to N, a\mapsto f(a)$. 
+            \item Den Graphen von $f$ definieren wir als $\text{Graph}(f)\coloneqq \{(x,y)\in M\times N\mid y=f(x)\}$
+        \end{enumerate}
+        Zwei Abbildungen $f,g:M\to N$ heißen gleich, falls $\forall x\in M:f(x)=g(x)$.
+    \end{defn}
+    \begin{defn}[Komposition]
+        $U,V,W$ Mengen, $f:U\to V, g:V\to W$ Abbildungen, wir definieren die Komposition $g\circ f:U\to W$ durch 
+        \[
+        (g\circ f)(u)\coloneqq  g(f(u)), \ \forall u \in U    
+        \]
+    \end{defn}
+    \begin{lemma}
+        Seien $M,N$ Mengen, $f:M\to N$ eine Abbildung. Seien $A,B\subset M$ und $X,Y\subset N$. Es gilt
+        \begin{enumerate}[(a)]
+            \item $f(A\cup B)=f(A)\cup f(B)$
+            \item $f^{-1}(A\cap B) = f^{-1}(A)\cap f^{-1}(B)$
+            \item $f^{-1}(A\cup B) = f^{-1}(A)\cup f^{-1}(B)$
+        \end{enumerate}
+    \end{lemma}
+    \begin{defn}[Injektiv, Surjektiv, Bijektiv] $f:M\to N$ eine Abbildung. $f$ heißt 
+        \begin{enumerate}
+            \item injektiv, falls $\forall x,y\in M: (f(x)=f(y)) \implies (x=y)$.
+            \item surjektiv, falls $\forall y\in N : \exists x\in M : f(x)=y$.
+            \item bijektiv, falls $f$ surjektiv und injektiv ist.
+        \end{enumerate}
+    \end{defn}
+    \begin{lemma}
+        Falls $f:M\to N$ bijektiv, so existiert genau eine Abbildung $g:N\to M$, sodass $(g\circ f)(m)=m, \ \forall m\in M$ und $(f\circ g)(n)=n, \ \forall n\in N$. Dann heißt $g$ die Umkehrabbildung
+        von $f$ und wir schreiben $g=f^{-1}$.
+    \end{lemma}
+    \begin{proof}
+        Für alle $y\in N$ existiert genau ein $x_y\in M$, s.d. $f(x_y)=y$. Wir definieren $g:N\to M$ durch $g(y)=x_y$. Diese Abbildung ist wohldefiniert,
+        weil jedes $y\in N$ genau ein Urbild $x\in M$ hat. Dieses $g$ erfüllt offenbar die gewünschten Eigenschaften.\\ 
+        Sei $g':N\to M$ mit den geforderten Eigenschaften. Sei $y\in N$ beliebig mit Urbild $x_y\in M$. Dann ist 
+        \[
+        g(y) = g(f(x_y)) = x_y = g'(f(x_y)) = g'(y)  
+        \]
+    \end{proof}
+    \subsection{Vollständige Induktion} Wir gehen nicht auf die Beweismethode ein. 
+    \begin{defn}
+        Für $n\in \N_0$, $x\in \R$ definieren wir 
+        \[
+            x^n = \begin{cases}
+                1, & n=0 \\ 
+                x\cdot x^{n-1}, & n>0 
+            \end{cases}
+        \]
+    \end{defn}
+    \begin{defn}
+        Seien $n,m\in \Z$ mit $n\le m$ ohne Einschränkung und $a_n,\ldots,a_m\in \R$ wir definieren 
+        \[
+        \sum_{k=n}^m a_k \coloneqq a_n+\ldots+a_m    
+        \]
+    \end{defn}
+    \begin{lemma}[Geometrische Reihe]
+        Sei $x\in \R\setminus \{1\}$, dann gilt 
+        \[
+        \sum_{k=0}^n x^k = \frac{1-x^{n+1}}{1-x}    
+        \]
+    \end{lemma}
+    \begin{defn}
+        Sei $n\in \N$, wir definieren rekursiv $0!\coloneqq 1$ und $n! = n\cdot (n-1)!$, falls $n>0$. \\
+        Ferner definieren wir den Binomialkoeffizienten für $n,k\in \N_0$ als
+        \[
+        \binom{n}{k} \coloneqq \frac{n!}{k!(n-k)!}, \ n\ge k \qquad \binom{n}{k} \coloneqq 0, \ n<k   
+        \]
+    \end{defn}
+    \begin{lemma}
+        Für $0<k<n$ und $k,n\in \N$ gilt 
+        \[
+        \binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}    
+        \]
+    \end{lemma}
+    \begin{lemma}
+        Für $x,y\in \R$ und $n\in \N_0$ gilt
+        \[
+        (x+y)^n = \sum_{k=0}^n \binom{n}{k}x^k y^{n-k}    
+        \]
+        ferner gilt 
+        \[
+        x^n - y^n = (x-y)\cdot \sum_{k=0}^{n-1} x^{n-k-1}y^k    
+        \]
+    \end{lemma}
+    \section{Körper und angeordnete Körper}
+    \begin{defn} Ein Körper ist ein Tripel $(K,+,\cdot)$ bestehend aus einer Menge und zwei binären Verknüpfungen $+$ und $\cdot$, s.d. die folgenden Axiome erfüllt sind
+        \begin{enumerate}[(1)]
+            \item $a+(b+c)= (a+b)+c, \ \forall a,b,c\in K$
+            \item $\exists 0\in K : a+0 = a$
+            \item $\forall a\in K : \exists b\in K : a+b=0$
+            \item $a+b=b+a, \ \forall a,b\in K$
+            \item $a(bc) = (ab)c, \ \forall a,b,c\in K$
+            \item $\exists 1\in K^\times  = K \setminus\{0\}: a\cdot 1 = a, \ \forall a\in K$
+            \item $\forall a\in K^\times:\exists b\in K^\times : ab=1$
+        \end{enumerate} 
+    \end{defn}
+    \begin{defn}
+        Ein angeordneter Körper ist ein Körper zusammen mit einer Teilmenge $P\subset K$, die die folgenden Eigenschaften erfüllt
+        \begin{enumerate}
+            \item[(O1)] Für jedes $a\in K$ gilt genau eine der folgenden Aussagen \begin{enumerate}[(1)]
+                \item $a\in P$
+                \item $a\notin P$
+                \item $-a\in P$
+            \end{enumerate}   
+            Man nennt diese Eigenschaft auch oft Trichotomie.
+            \item[(O2)] Für alle $a,b\in P$ gilt $a+b\in P, \ a\cdot b\in P$
+        \end{enumerate}
+    \end{defn}
+
+    \begin{lemma}
+        Sei $K$ ein Körper, dann gilt $a^2=(-a)^2$.  
+    \end{lemma}
+    \begin{proof}Sei $a\in K$ beliebig, es ist
+    \begin{align*}
+        a+(-a) &= 0 \Rightarrow a^2 + a\cdot (-a) = 0 \Rightarrow a^2 = -(a\cdot(-a)) \\ &= (-1)\cdot (a\cdot (-a)) = ((-1)a)(-a)=(-a)^2
+    \end{align*}
+    \end{proof}
+    \begin{lemma}
+        In jedem angeordneten Körper $K$ gilt $a^2\ge 0$ für alle $a\in K$.
+    \end{lemma}
+    \begin{proof}
+        Ist $a\ge 0$, so ist $a\cdot a = a^2\ge 0$ ist $a\le0$, so ist $(-a)\ge 0$ und es ist $0\le (-a)^2 = a^2$
+    \end{proof}
+    \begin{lemma}
+        Jeder angeordnete Körper hat unendliche viele Elemente, insbesondere ist die Abbildung $\N\to K, \ n\mapsto n\cdot 1_K$ injektiv.
+    \end{lemma}
+    \begin{defn}
+        $K$ ein angeordneter Körper, für zwei Elemente $a,b\in K$ definieren wir 
+        \[
+        \max(a,b) \coloneqq \begin{cases}
+            a, & a\ge b\\
+            b, & \text{sonst}
+        \end{cases}    
+        \] 
+        Ferner definieren wir den Absolutbetrag auf $K$ durch $\vert \cdot \vert:K\to K, \ a\mapsto \vert a\vert \coloneqq \max(a,-a)$.
+    \end{defn}
+    \begin{lemma}
+        Sei $\vert\cdot\vert$ wie oben definiert, dann gilt
+        \begin{enumerate}[(a)]
+            \item $\forall a\in K: \vert a\vert \ge 0$
+            \item $\forall a,b\in K: \vert ab\vert = \vert a\vert \cdot\vert b \vert $
+            \item $\forall a,b\in K: \vert a+b\vert \le \vert a \vert + \vert b\vert$
+        \end{enumerate}
+        Ferner gilt die sogenannte umgekehrte Dreiecksungleichung 
+        \[
+        \forall x,y\in K : \vert \vert x\vert - \vert y\vert \vert \le \vert x-y\vert     
+        \]
+    \end{lemma}
+    \section{Die reellen Zahlen $\R$} Sei im Folgenden $K$ stets ein angeordneter Körper mit Ordnungsrelation $\le$.
+    \begin{defn}
+        Eine Teilmenge $M\subset K$ heißt nach oben/unten beschränkt, falls ein $T\in K$ existiert mit $T\ge x,  \forall x\in K$ beziehungsweise, falls ein $T'\in K$ existiert mit $T'\le x,  \forall x\in K$. 
+        Eine Teilmenge heißt beschränkt, falls sie nach oben und nach unten beschränkt ist.
+        Jedes Element $T$ beziehungsweise $T'$ mit der obigen Eingenschaft heißt obere/untere Schranke von $M$.
+    \end{defn}
+    \begin{defn}
+        Sei $M\subset K$ eine Teilmenge, falls $M$ eine obere Schranke von $M$ enthält, also ein Element $t\in M$, sodass $t\ge x$ für alle $x\in M$, so heißt $t$ das Maximum der Menge $M$.
+        Analog definiert man im Falle der Existenz das Minimum einer Teilmenge von $K$. \\ Wir bezeichnen dieses Element dann mit dem Symbol $\max(M)$ beziehungsweise $\min(M)$.
+    \end{defn}
+    \begin{bem} Das Maximum(/Minimum) ist eindeutig bestimmt, denn seien $m,m'=\max(M)$, so gilt $m\ge m'$ und $m'\ge m$, also $m=m'$. Analog für das Minimum.
+    \end{bem}
+    \begin{defn}
+        Sei $M\subset K$, ein Element $s\in K$ heißt Supremum von $M$, falls 
+        \begin{enumerate}[(a)]
+            \item $s$ ist obere Schranke von $M$
+            \item Für alle oberen Schranken $t\in K$ von $M$ gilt $t\ge s$
+        \end{enumerate}
+        $s$ ist in einem bestimmten Sinne also die kleinste obere Schranke von $M$. \\ Analog definiert man das Infimum einer nach unten beschränkten Menge $\emptyset \neq M$ als die 
+        größte untere Schranke, Notation: $\inf M$.
+    \end{defn}
+    \begin{bem}
+        Das Supremum einer nicht leeren Teilmenge ist eindeutig bestimmt. Es gibt nicht leere Teilmengen von $\Q$, die kein Supremum in $\Q$ haben.
+        Etwa $\{x\in \Q: x^2 < 2\}$
+    \end{bem}
+    \begin{defn}
+        Ein angeordneter Körper $K$ heißt supremumsvollständig (oder auch Dedekindvollständig), falls jede nicht-leere, nach oben beschränkte Teilmenge ein Supremum hat.
+    \end{defn}
+    \begin{bem}
+        Bis auf Isomorphie gibt es einen angeordneten Dedekind-vollständigen Körper, nämlich die reellen Zahlen. 
+    \end{bem}
+    \begin{satz} Die Menge $\N\subset \R$ ist unbeschränkt. D.h. für alle $x\in \R$ positiv existiert ein $n\in \N$ mit $n> x$
+    \end{satz}
+    \begin{lemma}Es gelten die folgenden Aussagen 
+        \begin{enumerate}[(a)]
+            \item Sei $x\in \R$ beliebig, dann existiert eine eindeutig bestimmte ganze Zahl $k\in \Z$ mit $k\le x < k+1$.
+            \item Für alle $\epsilon >0$ gibt es ein $n\in \N$ mit $0<1/n < \epsilon$
+            \item Die Menge $\Q$ liegt dicht in $\R$, d.h. für alle $x\in \R$ und alle $\epsilon >0$ gibt es ein $q\in \Q$ mit $\vert x-q\vert <\epsilon$.
+        \end{enumerate}
+    \end{lemma}
+    \begin{bem}
+        Man kann jede reelle Zahl in der Dezimaldarstellung schreiben. 
+    \end{bem}
+    \begin{defn}
+        Sei $M$ eine Menge mit endlich vielen Elementen, dann nennen wir die Anzahl
+        der Elemente von $M$ die Mächtigkeit oder Kardinalität von $M$, Notation $\vert M\vert$ oder $\# M$.\\
+        Seien $M,N$ endliche Mengen. Gibt es eine Bijektion $\phi:M\to N$, so ist $\# M =\# N$.
+    \end{defn}
+    \begin{defn}
+        Seien nun $M,N$ zwei beliebige Mengen. Wir nennen $M,N$ gleichmächtig, falls es eine Bijektion $M\to N$ gibt. \\
+        Sei $A$ eine Menge, exisitert eine Bijektion $\N\to A$, so heißt $A$ abzählbar, andernfalls heißt $A$ überabzählbar.
+    \end{defn}
+    \begin{bem}
+        Die Mengen $2\N$ und $\Z$ sind beispielsweise abzählbar, denn 
+        \begin{enumerate}[(a)]
+            \item $\N \to 2\N, \ n\mapsto 2n$ ist eine Bijektion.
+            \item Man sieht leicht, dass $\N_0=\N\cup \{0\}$ und $\N$ gleichmächtig sind.
+            \[
+            \N_0 \to \Z, \ n \mapsto 
+            \begin{cases}
+            \frac{n}{2}, & n \text{ gerade} \\
+            -\frac{n+1}{2}, & n \text{ ungerade}    
+            \end{cases}     
+            \] ist eine Bijektion.
+        \end{enumerate}
+        Gleichmächtig ist eine Äquivalenzrelation (reflexiv, symmetrisch klar) und weil die Komposition von Bijektionen eine 
+        Bijektion ist, ist sie auch transitiv. 
+    \end{bem}
+    \begin{satz}
+        Die Menge $\Q$ ist abzählbar.
+    \end{satz}
+    \begin{satz}
+        Die Menge der reellen Zahlen $\R$ ist überabzählbar.
+    \end{satz}
+    \begin{lemma}
+        Sei $S$ eine Menge mit mindestens zwei Elementen, dann ist $\operatorname{Abb}(\N,S)$ überabzählbar.
+    \end{lemma}
+    \begin{defn}
+        Sei $M$ eine Menge, dann heißt 
+        \[
+        \mathfrak{P}(M) = 2^M = \{A:A\subset M\}    
+        \] die Potenzmenge von $M$. Die Potenzmenge ist also die Menge aller Teilmengen.
+    \end{defn}
+    \begin{bem}
+        Falls $\# M =n < \infty$, so ist $\# \mathfrak{P}(M) = 2^n$. \\
+        Es ist $\mathfrak{P}(\N)$ gleichmächtig zu $\R$. \\
+        Frage: Gibt es eine Menge, deren Mächtigkeit zwischen der der reellen Zahlen und der natürlichen Zahlen liegt? (Kontinuumshypothese)
+    \end{bem}

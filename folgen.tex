@@ -1,0 +1,198 @@
+\section{Folgen}
+    \begin{defn}
+        Eine Abbildung $a:\N \to \R$ oder $a:\N\to \C$ nennen wir eine Folge reeller beziehungsweise komplexer Zahlen, statt
+        $a(n)$ schreiben wir oft $a_n$ und statt $a$ suggestiv $(a_n)_{n\in \N}$.
+    \end{defn}
+    \begin{bem}
+        Wir schreiben statt $(a_n)_{n\in \N}$ oft auch $(a_n)$ oder auch $\{a_n\}$.
+    \end{bem}
+    \begin{bem}[Komplexe Zahlen]
+        Wir definieren $\C=\{a+bi : a,b\in \R\}$, wobei $i^2=-1$ gilt. Man definiert 
+        \begin{align*}
+            (a+bi)+(x+yi) &\coloneqq (a+x)+(b+y)i  \\
+            (a+bi)\cdot (x+yi) &\coloneqq (ac-bd) +i(ad+bc) 
+        \end{align*}
+        und $1_\C = 1_\R$ sowie $0_\R = 0_\C$ mit diesen Strukturen ist $\C$ ein Körper. Offenbar ist $\C \cong \R \oplus i\R$ und insbesondere
+        ist $\C$ ein zwei-dimensionaler $\R$-Vektorraum mit $\R$-Basis $(1,i)$. \\
+        Für ein $z=a+bi\in \C$ definieren wir $\Re(z) = a$ und $\Im(z)=b$ sowie $\overline{z}=a-bi$ und $\overline{z}$ heißt das komplexe Konjugat zu $z$. Man sieht direkt, 
+        dass $\overline{\overline{z}} = z, \ \forall z\in \C$. \\ 
+        Man kann zeigen, dass $\overline{\cdot}:\C\to \C, \ z\mapsto \overline{z}$ der einzige nicht triviale Körperautomorphismus von $\C$ ist,
+        der eingeshränkt auf $\R$ die Identität ist.  \\
+        Wir definieren die Norm oder den Betrag einer komplexen Zahl $z=a+bi\in \C$ durch
+        \[
+            \vert z\vert \coloneqq \sqrt{\Re(z)^2+\Im(z)^2} = \sqrt{a^2+b^2}
+        \] 
+        Es gilt $\vert z+w\vert \le \vert z\vert +\vert w\vert$, sowie $\vert zw\vert = \vert z\vert\vert w\vert$ für alle $z,w\in \C$.
+        \\ Wir können $\R$ als Teilkörper von $\C$ betrachten, indem wir $\C \to \R, \ a+bi\mapsto a$.
+    \end{bem}
+    \begin{defn}[Konvergenz]
+        Eine Folge komplexer Zahlen $(a_n)_{n\in \N}$ heißt konvergent, falls ein $a\in \C$ existiert mit 
+        \[
+        \forall \epsilon > 0 :\exists n(\epsilon) : \forall n\ge n(\epsilon): \vert a-a_n\vert <\epsilon    
+        \]
+    $a$ heißt dann der Grenzwert oder Limes von $(a_n)_{n\in \N}$. Wir schreiben $\lim_{n\to\infty} a_n =a$ oder $a_n \xrightarrow{n\to \infty} a$. \\
+    Ist eine Folge nicht konvergent, so heißt sie divergent. 
+    Konvergiert eine Folge gegen Null, so nennen wir sie Nullfolge.
+    \end{defn}
+    \begin{bem}
+        Sei $(a_n)_{n\in \N}$ eine konvergente Folge komplexer Zahlen mit Grenzwert $a\in \C$. Wir definieren $D_\epsilon(a)\coloneqq \{x\in \C:\vert a-x \vert <\epsilon\}$ (das $D$ steht für Disc).  \\
+        Dann gilt für alle $\epsilon >0$, dass für fast alle $n\in \N$ gilt $a_n\in D_\epsilon(a)$.
+    \end{bem}
+    \begin{lemma}
+        Der Grenzwert einer konvergenten Folge ist eindeutig bestimmt. Ferner ist jede konvergente Folge beschränkt.
+    \end{lemma}
+    \begin{bem}
+        Es ist 
+        \begin{enumerate}[(a)]
+            \item Für alle $a\in \R$ gilt \[\lim_{n\to\infty} \sqrt[n]{a}=1 \]
+            \item Ferner gilt \[\lim_{n\to \infty} \sqrt[n]{n}=1\]
+        \end{enumerate}
+    \end{bem}
+    \begin{lemma}
+        Seien $(a_n)_{n\in \N}, \ (b_n)_{n\in \N}$ konvergente komplexwertige Folgen und es gelte $\lim_{n\to \infty} a_n = a\in \C$ und $\lim_{n\to \infty} b_n =b\in \C$. Ferner sei $\lambda \in \C$. Dann gilt
+        \begin{enumerate}[(i)]
+            \item $(\lambda a_n)_{n\in \N} \xrightarrow{n \to \infty} \lambda a$
+            \item $(a_n + b_n)_{n\in \N} \xrightarrow{n\to \infty} a+b$
+            \item $(a_n\cdot b_n)_{n\in \N} \xrightarrow{n\to \infty} a\cdot b$
+            \item Falls $b\neq 0$, so ist $b_n\neq 0$ für fast alle $n\in \N$ und es gilt 
+            \[
+            \left(\frac{a_n}{b_n}\right)_{n\in \N} \xrightarrow{n\to \infty} \frac{a}{b}    
+            \]
+        \end{enumerate}
+    \end{lemma}
+    \begin{lemma}
+        Seien $(a_n)$ und $(b_n)$ konvergente reelle Folgen mit $a_n \le b_n$ für unendlich viele $n\in \N$, so gilt $\lim a_n \le \lim b_n$.
+    \end{lemma}
+    \begin{lemma}[Sandwich-Lemma]
+        Seien $(a_n)$ und $(c_n)$ konvergente Folgen mit $\lim a_n = \lim c_n$ und es gelte $a_n\le b_n \le c_n$ für fast alle $n\in \N$, so gilt 
+        \begin{enumerate}[(i)]
+            \item $(b_n)$ ist konvergent 
+            \item $\lim b_n = \lim a_n = \lim c_n$
+        \end{enumerate}
+    \end{lemma}
+    \begin{defn}
+        Eine Folge $(a_n)$ reeller Zahlen heißt monoton wachsend, falls $a_{n+1}\ge a_n$ für alle $n\in \N$ gilt.
+        Monoton fallsend ist analog definiert.
+    \end{defn}
+    \begin{lemma}
+        Sei $(a_n)$ eine beschränkt Folge, dann gilt
+        \begin{enumerate}[(i)]
+            \item Ist $(a_n)$ monoton wachsend, so ist $(a_n)$ konvergent mit 
+            \[
+            \lim_{n\to \infty} a_n = \sup \{a_n : n\in \N\}    
+            \]
+            \item Ist $(a_n)$ monoton fallend, so ist die Folge konvergent und es gilt
+            \[
+            \lim_{n\to \infty} a_n = \inf\{a_n : n\in \N\}    
+            \]
+        \end{enumerate}
+    \end{lemma}
+    \begin{defn}
+        Sei $(a_n)$ eine komplexwertige Folge. Dann heißt $a\in \C$ ein Häufungspunkt von $(a_n)$, falls für alle $\epsilon>0$ für unendlich viele $n\in \N$ gilt: $\vert a_n-a\vert <\epsilon$. 
+    \end{defn}
+    \begin{bem}
+        Ist eine Folge $(a_n)$ konvergent, so hat sie genau einen Häufungspunkt, nämlich $\lim a_n$. Es gibt aber Folgen, die genau einen Häufungspunkt haben und divergent sind, etwa 
+        \[
+        a_n \coloneqq \begin{cases}
+            n, & n \in 2\N \\
+            0, & n\in 2\N +1
+        \end{cases}    
+        \] Die Folge hat $0$ als Häufungspunkt, sie ist unbeschränkt, also divergent und man sieht leicht, dass 
+        sie keinen anderen Häufungspunkt hat. 
+    \end{bem}
+    \begin{defn}
+        Sei $(a_n)$ eine Folge komplexer Zahlen und $(n_k)_{k\in \N}$ eine streng monoton wachsende Folge natürlicher Zahlen, dann heißt die 
+        Folge $(a_{n_k})_{k\in \N}$ eine Teilfolge von $(a_n)$.
+    \end{defn}
+    \begin{lemma}
+        Sei $(a_n)$ eine komplexwertige Folge, dann ist $a\in \C$ ein Häufungspunkt von $(a_n)$ genau dann, wenn es eine Teilfolge von $(a_n)$ gibt, die gegen $a$ Konvergiert. 
+    \end{lemma}
+    \begin{bem}[Irres Beispiel] $\Q$ ist abzählbar, das heißt es gibt eine Bijektion $\N\to \Q, \ n\mapsto a_n$. Wir betrachten die so definierte Folge $(a_n)$. Für alle $x\in \R$ existiert eine Folge $(q_n)$ mit rationalen Folgegliedern, sodass $\lim q_n =x$, weil $\Q\subset\R$ dicht. Also gibt es für jede reelle Zahl $x\in \R$ eine Teilfolge von $(a_n)$, die gegen $x$ konvergiert, also ist jede reelle Zahl ein Häufungspunkt dieser Folge.  
+    \end{bem}
+    \begin{lemma}
+        Jede reelle Folge besitzt eine monotone Teilfolge.
+    \end{lemma}
+    \begin{satz}[Bolzano-Weierstraß]
+        Jede beschränkte Folge reeller Zahlen besitzt eine konvergente Teilfolge.
+    \end{satz}
+    \begin{defn}[Cauchy-Folge]
+        Eine komplexwertige Folge $(a_n)$ heißt Cauchy-Folge, falls 
+        \[
+        \forall \epsilon > 0 : \exists N\in \N : \forall n,m\ge N: \vert a_n -a_m \vert < \epsilon    
+        \]        
+    \end{defn}
+    \begin{satz}
+        Sei $(a_n)$ eine Folge reeller oder komplexer Zahlen. Es gilt: Die Folge $(a_n)$ ist konvergent geanu dann, wenn die Folge $(a_n)$ ist eine Cauchy-Folge.
+    \end{satz}
+    \begin{bem}
+        Dass jede konvergente Folge eine Cauchy-Folge ist, gilt im Allgemeinen (in sogenannten metrischen Räumen und $\Q$, $\R$ und $\C$ sind auf natürliche Weise metrische Räume). Dass jede Cauchy-Folge konvergiert gilt nicht im Allgemeinen, etwa in $\Q$ nicht. \\
+        Man nennt deshalb $\R$ und $\C$ vollständig (bezüglich Konvergenz von Cauchy-Folgen). \\
+        Der Beweis hat ferner gezeigt, dass falls eine Folge $(a_n)$ komplexer Zahlen konvergent ist, so auch jede Teilfolge von $(a_n)$ und die Teilfolge hat denselben Grenzwert.
+    \end{bem}
+    \subsection{Limes superior und Limes inferior}
+    Sei $(a_n)$ eine beschränkte Folge reeller Zahlen. Dann sind 
+    \begin{enumerate}[(i)]
+        \item $B_n \coloneqq \sup\{a_k : k\ge n\}$ und 
+        \item $b_n \coloneqq \inf\{ a_k : k\ge n\}$ 
+    \end{enumerate}
+    wohldefiniert und existieren. Dann gilt, dass $B_n$ monoton fällt und $b_n$ monoton wächst und beide beschränkt sind, ferner gilt $b_n \le B_n$. Das heißt sie sind konvergent und es gilt $\lim b_n \le \lim B_n$.
+    \begin{defn}[Limes superior]
+        Sei $(a_n)$ eine beschränkte Folge.
+        \begin{enumerate}[(a)] 
+            \item Wir nennen \[\limsup_{n\to \infty} a_n \equiv \overline{\lim_{n\to \infty}} (a_n) \coloneqq \lim_{n\to\infty} B_n\] den Limes superior.
+            \item Wir nennen \[\liminf_{n\to \infty} a_n \equiv \underline{\lim_{n\to \infty}} (a_n) \coloneqq \lim_{n\to\infty} b_n\] den Limes inferior.
+            
+        \end{enumerate}
+    \end{defn}
+    \begin{bem}
+        Es gilt \begin{align*}
+            \limsup_{n\to \infty} a_n &= \inf_{n\in \N} \sup_{k\ge n} a_k \\
+            \liminf_{n\to\infty} a_n &= \sup_{n\in \N} \inf_{k\ge n} a_k
+        \end{align*}
+        das folgt direkt daraus, dass monotone Folgen gegen das Infimum beziehungsweise Supremum konvergieren.
+    \end{bem}
+    \begin{defn}
+        Sei $A\subset \R$ nicht nach oben beschränkt, wir definieren $\sup A\coloneqq +\infty$. Ist $A\subset R$ nicht nach unten beschränkt, so definieren wir $\inf A=-\infty$. Ferner definieren
+        wir $\sup \emptyset = -\infty$ und $\inf \emptyset = \infty$. Die Ordnung auf $\R$ wird druch $-\infty < x< \infty$ für alle $x\in \R$ fortgesetzt.
+    \end{defn}
+    \begin{defn}
+        Eine Folge $(a_n)$ reeller Zahlen heißt bestimmt divergent gegen $\infty$, falls gilt
+        \[
+        \forall K \in \R:\exists n_0 \in \N:\forall n\ge n_0 : a_n \ge K    
+        \]
+        Die Folge $(a_n)$ heißt bestimmt divergent, gegen $-\infty$, falls $(-a_n)$ bestimmt divergent gegen $\infty$ ist.
+        Wir schreiben $\lim (a_n) = \infty$ oder $a_n \xrightarrow{n\to\infty} \infty$ und analog im Fall $-\infty$.
+    \end{defn}
+    \begin{satz}
+        Die Folge $(a_n)$ sei bestimmt divergent gegen $\pm \infty$, dann gilt
+        \begin{enumerate}[(a)]
+            \item $a_n\neq 0$ für fast alle $n\in \N$.
+            \item $\lim 1/a_n = 0$.
+        \end{enumerate}
+    \end{satz}
+    \begin{satz}
+        Sei $(a_n)$ eine Nullfolge mit der Eigenschaft $a_n>0$ für fast alle $n\in \N$ (bzw. $a_n<0$ für fast alle $n\in \N$), dann gilt, dass die Folge $(1/a_n)$ bestimmt gegen $\infty$ (bzw. $-\infty$) dviergiert.
+    \end{satz}
+    \begin{satz}[Alternative Charakterisierung von $\limsup$ und $\liminf$]
+        Sei $(a_n)$ Folge reeller Zahlen, dann gilt 
+        \begin{enumerate}[(a)]
+            \item $\limsup a_n = a\in \R$ genau dann, wenn für alle $\epsilon>0$ gilt:
+            \begin{enumerate}[(i)]
+                \item $a_n < a+\epsilon$ für fast alle $n\in \N$.
+                \item $a_n > a-\epsilon$ für unendlich viele $n\in \N$.
+            \end{enumerate}
+            \item $\liminf a_n = a\in \R$ genau dann, wenn für alle $\epsilon>0$ gilt:
+            \begin{enumerate}[(i)]
+                \item $a_n > a-\epsilon$ für fast alle $n\in \N$
+                \item $a_n < a+\epsilon$ für unendlich viele $n\in \N$
+            \end{enumerate}
+            \item $(a_n)$ ist genau dann konvergent, wenn $\limsup a_n = \liminf a_n \in \R$, dann ist $\lim a_n = \limsup a_n = \liminf a_n$.
+        \end{enumerate}
+    \end{satz}
+    \begin{kor}
+        Es gilt 
+        \begin{align*}
+            \limsup a_n &= \sup \{a\mid a \text{ ist Häufungspunkt von } (a_n) \} \\
+            \liminf a_n &= \inf \{a\mid a \text{ ist Häufungspunkt von } (a_n) \} 
+        \end{align*}
+    \end{kor}

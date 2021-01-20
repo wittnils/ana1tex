@@ -1,0 +1,58 @@
+\section{Stetige Funktionen und die Topologie des $\R^n$}
+\begin{defn}
+    Es sei $\emptyset\neq D\subset \R^n$. Eine reellwertige bzw. komplexwertige Funktion auf $D$ ist eine Abbildung $f:D\to \R$ bzw. $f:D\to \C$.
+    Für zwei Funktionen $f,g:D\to \C$ (oder $\R$) definieren wir für alle $x\in D$
+    \begin{align*}
+        (f+g)(x) &\coloneqq f(x)+g(x) \\
+        (f-g)(x) &\coloneqq f(x)-g(x) \\
+        (f\cdot g)(x) &\coloneqq f(x)\cdot g(x) 
+    \end{align*}
+    ist $g(x)\neq 0$ für alle $x\in D$, so auch 
+    \[
+    \frac{f}{g}(x) \coloneqq \frac{f(x)}{g(x)}    
+    \]
+    Da $\C$ (und $\R$) Körper sind, sind diese Konstrutkionen wohldefiniert und wieder Abbildungen $D\to \C$ oder $D\to \R$.
+\end{defn}
+\begin{defn}[Euklidischer Abstand]
+    Seien $x=(x_1,\ldots,x_n)$ und $y=(y_1,\ldots,y_n)$ Punkte des $\R^n$, dann definieren wir 
+    \[
+    \vert x-y\vert \coloneqq \left(\sum_{i=1}^n (x_i-y_i)^2\right)^{1/2}    
+    \]
+\end{defn}
+\begin{defn}[$\epsilon$-$\delta$-Kriterium für Stetigkeit]
+    Sei $D\subset \R^n$. Eine Funktion $f:D\to \C$ (oder $\R$) heißt stetig in $x_0\in D$, falls gilt
+    \[
+    \forall \epsilon >0 : \exists \delta >0 : (\vert x-x_0\vert<\delta) \implies (\vert f(x)-f(x_0)\vert < \epsilon)    
+    \]
+    Ist $f$ in jedem Punkt von $D$ stetig, so heißt $f$ stetig auf $D$. Wir schreiben
+    \[
+    \mathscr{C}^0(D,\C) \coloneqq \{ f:D\to \C \mid f \text{ stetig in } D\}    
+    \]
+    und analog $\mathscr{C}^0(D,\R)$
+\end{defn}
+\begin{satz}
+    Eine Funktion $f:D\to \C$ ist genau dann in $x^*\in D$ stetig, falls für jede Folge $(x_n)_{n\in \N}$ in $D$ mit $\lim x_n =x$ gilt:
+    \[
+    \lim_{n\to \infty} f(x_n) = f(x^*) = f(\lim_{n\to\infty} x_n)    
+    \]
+    Entsprechend \glqq vertauschen stetige Funktionen mit Limesbildung\grqq.
+\end{satz}
+\begin{satz}[Rechenregeln]
+    Seien $f,g:D\to \C$ stetig in $x^*\in D$. Dann sind auch $f+g$, $f-g$, $f\cdot g$ und falls definiert auch $f/g$ stetig in $x^*$.
+\end{satz}
+\begin{satz}[Komposition stetiger Funktione]
+    Sei $f:D\to \C$ und $g:E\to \C$ mit $\im f \subset E$. Dann gilt: Ist $f$ stetig in $x^*\in D$ und $g$ stetig ind $f(x^*)\in E$, dann ist $g\circ f:D\to \C$ stetig in $x^*$.
+\end{satz}
+\begin{defn}[Lipschitz-Stetigkeit]
+    Sei $f:D\to \C$ eine Funktion. $f$ heißt Lipschitz-stetig mit Lipschitz-Konstante $L\ge 0$, falls gilt
+    \[
+    \forall x,y\in D: \vert f(x)-f(y)\vert \le L\cdot \vert x-y\vert    
+    \]
+\end{defn}
+\begin{bem}
+    Man sieht leich, dass jede Lipschitz-stetige Funktion stetig ist. Sei $f:D\to \C$ Lipschitz-steig mit Lipschitz-Konstante $L\ge 0$. Sei $x\in D$ beliebig und $\epsilon>0$ beliebig. Setze $\delta = \epsilon/L$, dann gilt für $y\in D$ mit $\vert x-y\vert<\delta$:
+    \[
+    \vert f(x)-f(y)\vert \le L \cdot \vert x-y\vert \le  L\cdot \frac{\epsilon}{L}=\epsilon
+    \]
+    also $f$ stetig in $x\in D$. Da $x\in D$ beliebig war, ist $f$ stetig auf $D$.
+\end{bem}
