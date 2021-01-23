@@ -39,7 +39,7 @@ all: $(PROJNAME).pdf
 # missing file reference and interactively asking you for an alternative.
 
 $(PROJNAME).pdf: $(PROJNAME).tex
-	latexmk -pdf -pdflatex="pdflatex -interactive=nonstopmode" -output-directory=$(BUILDDIR) -use-make $<
+	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -output-directory=$(BUILDDIR) -use-make $<
 
 cleanall:
 	latexmk -C -output-directory=$(BUILDDIR)

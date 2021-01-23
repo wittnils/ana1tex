@@ -111,3 +111,48 @@ der (abgeschlossene) Ball um $a$ von Radius $r$.
 \begin{lemma}
     \(M\subseteq \R^n\) ist genau dann abgeschlossen, wenn für alle konvergenten Folgen \((a_n)_{n\in \N}\) in M auch \(\lim a_n \in M\) gilt.
 \end{lemma}
+\begin{satz}
+    \begin{enumerate}
+        \item Beliebige Vereinigungen offener Mengen sind offen.
+        \begin{itemize}
+            \item[Version 1:] Es sei $I$ eine (Index-)Menge. Außerdem sei für jedes $i\in I$ eine offene Menge $U_i\subseteq \R^n$ gegeben. Dann gilt:
+            \[
+                \bigcup_{i\in I} U_i \subseteq R^n \mathrm{\ ist\ offen.}
+            \]
+            \item[Version 2:] Es sei $\mathscr{U}\subseteq\mathscr{P}(R^n)$ mit \(\forall U\in \mathscr{U}: U\) ist offen. Dann gilt:
+            \[
+                \bigcup \mathscr{U} \coloneqq \{x\in\R^n \mid \exists U\in\mathscr{U}: x\in U\}\subseteq \R^n \mathrm{\ offen.}
+            \]
+        \end{itemize}
+        \item Beliebige Durchschnitte abgeschlossener Mengen sind abgeschlossen.
+        \begin{itemize}
+            \item[Version 1:] Es sei $I$ eine (Index-)Menge. Außerdem sei für jedes $i\in I$ eine abgeschlossene Menge $A_I\subseteq \R^n$ gegeben. Dann gilt:
+            \[
+                \bigcap_{i\in I} A_i \subseteq R^n \mathrm{\ ist\ abgeschlossen.}
+            \]
+            \item[Version 2:] Es sei $\mathrm{A}\subseteq\mathscr{P}(R^n)$ mit \(\forall A\in \mathscr{A}: A\) ist abgeschlossen. Dann gilt:
+            \[
+                \bigcap \coloneqq \{x\in \R^n \mid \forall A\in\mathscr{A}: x\in A\} \mathrm{ist abgeschlossen.}
+            \]
+        \end{itemize}
+
+    \end{enumerate}
+\end{satz}
+\begin{bem}
+    \begin{enumerate}
+        \item Die jeweilig umgekehrten Aussagen sind falsch:
+        \begin{align*}
+            \bigcap_{n\in\N} \left(-1-\frac{1}{n},1+\frac{1}{n}\right) &= [-1,1]\\
+            \bigcup_{n\in\N} \left(-1+\frac{1}{n},1-\frac{1}{n}\right) &= (-1,1)
+        \end{align*}
+        \textbf{Aber}: Endliche Schnitte offener Mengen sind offen. Endliche Vereinigungen abgeschlossener Mengen sind abgeschlossen.
+        \item Beide Versionen im Satz sind äquivalent:
+        \begin{align*}
+            \mathrm{V1} \longrightarrow \mathrm{V2}:\quad& U_i, i\in I \longrightarrow \mathscr{U} \coloneqq = \{U_i \mid i\in I\}\\
+            \mathrm{V2} \longrightarrow \mathrm{V1}:\quad& \mathscr{U}\subseteq \mathscr{P}(\R^n) \longrightarrow I \coloneqq \mathscr{U}: \mathscr{U} = \bigcup_{U\in I=\mathscr{U}}\{U\}
+        \end{align*}
+    \end{enumerate}
+\end{bem}
+\begin{defn}[Innere/ Abschluss]
+    Das Innere $\interior{M}$ einer Menge $M\subseteq R^n$ ist die Menge $\interior{M} \coloneqq M \setminus \partial M$. Der Abschluss $\exterior{M}$ von $M$ ist $\exterior{M}\coloneqq M\cup \partial M$.
+\end{defn}
