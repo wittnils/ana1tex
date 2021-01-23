@@ -1,0 +1,48 @@
+\section*{Suprema und Infima, Beschränktheit}
+\begin{defn}
+    Eine Menge $M\subset \R^n$ heißt beschränkt, falls es ein $r\in \R^+$ gibt mit $B_r(0)\supset M$. Im Fall $n=1$ heißt das nichts anderes als $\vert x\vert < r$ für alle $x\in \R$.
+\end{defn}
+\begin{defn}[Supremum und Kriterium]
+    Sei $\emptyset\neq M\subset \R$ nach oben beschränkt. Dann definieren wir $\sup M$ als die kleinste obere Schranke von $M$. Wir haben
+    folgende Äquivalenzen
+    \begin{enumerate}[(i)]
+        \item $s = \sup M$
+        \item $\forall \epsilon > 0: \exists m\in M: s-\epsilon \le m$
+        \item $\forall \epsilon > 0: \exists m\in M: s-\epsilon < m$
+    \end{enumerate}
+\end{defn}
+Das Ganze funktioniert für $\inf M$ analog. 
+\begin{satz} Der Körper $\R$ ist supremums-vollständig, das heißt, dass jede nicht-leere nach oben beschränkte Menge ein Supremum
+    in $\R$ hat.
+\end{satz}
+\begin{bem}
+    $\Q$ ist nicht supremums-vollständig, denn die Menge $\{x\in \Q:x^2<2\}\subset \Q$ hat kein Supremum in $\Q$. 
+\end{bem}
+\section*{Folgen}
+\begin{defn}[Folge und Konvergenz]
+    Eine Abbildung $a:\N\to \C, \ n\mapsto a(n) \eqqcolon a_n$ heißt Folge. Eine Folge heißt komplexwertige
+    konvergent mit Grenzwert $a\in \C$ genau dann, wenn 
+    \[
+    \forall \epsilon >0 : \exists N(\epsilon) : \forall n\ge N(\epsilon) : \vert a_n -a \vert < \epsilon    
+    \] 
+    Wir schreiben abkürzend $(a_n)_{n\in \N}$ oder auch nur $(a_n)$. Falls $(a_n)$ gegen $a\in \C$ konvergiert, so schreiben wir 
+    \[
+        \lim_{n\to \infty} a_n \equiv \lim a_n \coloneqq a
+    \]
+\end{defn}
+\begin{defn}[Cauchy-Folge]
+    Eine Folge $(a_n)$ in $\C$ heißt Cauchy-Folge genau dann, wenn 
+    \[
+    \forall \epsilon > 0: \exists N\in \N:\forall n,m \ge N: \vert a_n -a_m \vert <\epsilon    
+    \]
+\end{defn}
+\begin{bem} Jede konvergente Folge ist eine Cauchy-Folge. Die Umkehrung gilt im Allgemeinen nicht, etwa ist die Folge 
+    \[
+    a_{n+1} \coloneqq \frac{1}{2}\cdot \left( a_n + \frac{2}{a_n}\right), \ n>1 \quad a_0 \coloneqq 2     
+    \]
+    hat ausschließlich rationale Folgeglieder und ist konvergent, aber konvergiert nicht in $\Q$.
+\end{bem}
+
+\begin{lemma}
+    Eine monoton fallende/wachsende nach unten/oben beschränkte Folge $(a_n)$ ist konvergent. 
+\end{lemma}
