@@ -33,9 +33,9 @@
 \begin{satz}
     Eine Funktion $f:D\to \C$ ist genau dann in $x^*\in D$ stetig, falls für jede Folge $(x_n)_{n\in \N}$ in $D$ mit $\lim x_n =x$ gilt:
     \[
-    \lim_{n\to \infty} f(x_n) = f(x^*) = f(\lim_{n\to\infty} x_n)    
+    \lim_{n\to \infty} f(x_n) = f(x^*) = f(\lim_{n\to\infty} x_n)
     \]
-    Entsprechend \glqq vertauschen stetige Funktionen mit Limesbildung\grqq.
+    Entsprechend \glqq vertauschen stetige Funktionen mit  Limesbildung\grqq.
 \end{satz}
 \begin{satz}[Rechenregeln]
     Seien $f,g:D\to \C$ stetig in $x^*\in D$. Dann sind auch $f+g$, $f-g$, $f\cdot g$ und falls definiert auch $f/g$ stetig in $x^*$.
@@ -50,9 +50,64 @@
     \]
 \end{defn}
 \begin{bem}
-    Man sieht leich, dass jede Lipschitz-stetige Funktion stetig ist. Sei $f:D\to \C$ Lipschitz-steig mit Lipschitz-Konstante $L\ge 0$. Sei $x\in D$ beliebig und $\epsilon>0$ beliebig. Setze $\delta = \epsilon/L$, dann gilt für $y\in D$ mit $\vert x-y\vert<\delta$:
+    Man sieht leicht, dass jede Lipschitz-stetige Funktion stetig ist. Sei $f:D\to \C$ Lipschitz-steig mit Lipschitz-Konstante $L\ge 0$. Sei $x\in D$ beliebig und $\epsilon>0$ beliebig. Setze $\delta = \epsilon/L$, dann gilt für $y\in D$ mit $\vert x-y\vert<\delta$:
     \[
     \vert f(x)-f(y)\vert \le L \cdot \vert x-y\vert \le  L\cdot \frac{\epsilon}{L}=\epsilon
     \]
     also $f$ stetig in $x\in D$. Da $x\in D$ beliebig war, ist $f$ stetig auf $D$.
 \end{bem}
+\subsection{Offene und abgeschlossene Mengen}
+Zu $a\in\R$ und $r\ge0$ sei
+\[
+    \B_r(p) \coloneqq \{x\in\R^n \mid \vert x - a \vert \le r\}
+\]
+der (abgeschlossene) Ball um $a$ von Radius $r$.
+\begin{defn}[Randpunkt]
+    Es sei $M\subseteq\R^n$ eine Menge. Ein Punkt $p\in\R^n$ heißt Randpunkt von $M$, falls gilt:
+    \[
+        \forall r>0: \B_r(p)\cap M \neq \emptyset \neq \B_r(p)\cap (\R^n\setminus M).
+    \]
+    Es bezeichnet:
+    \[
+        \partial M \coloneqq \{\mathrm{Randpunkte\ von\ } M\}.
+    \]
+\end{defn}
+\begin{defn}[offen/ abgeschlossen] Sei $M\subseteq \R^n$ eine Teilmenge.
+    \begin{enumerate}
+        \item $M$ heißt offen, falls $M\cap \partial M = \emptyset$ gilt.
+        \item $M$ heißt abgeschlossen, falls $\partial M \subseteq M$ gilt.
+    \end{enumerate}
+\end{defn}
+\begin{lemma} Sei $M\subseteq \R^n$ eine Teilmenge.
+    \begin{enumerate}
+        \item $\partial M = \partial (\R^n\setminus M)$
+        \item \(
+                  M \mathrm{\ offen\ } \iff \R^n\setminus M \mathrm{\ abgeschlossen}\\
+                  M \mathrm{\ abgeschlossen\ } \iff \R^n\setminus M \mathrm{\ offen}
+        \)
+    \end{enumerate}
+\end{lemma}
+\begin{lemma}
+    $M\subseteq \R^n$ ist genau dann offen, wenn gilt:
+    \[
+        \forall p\in M\ \exists r > 0: \B_r(p) \subseteq M.
+    \]
+\end{lemma}
+\begin{lemma}
+    $M\subseteq \R^n$ ist genau dann offen, wenn gilt:
+    \[
+        \forall p\in M\ \exists r > 0: \oB_r(p) \subseteq M.
+    \]
+\end{lemma}
+\begin{kor}
+    Jede offene Menge ist eine Vereinigung offener Bälle.
+\end{kor}
+\begin{bem}
+    \glqq Punkte sind abgeschlossen.\grqq{} \(\forall p\in\R^n: \{p\}\) is abgeschlossen. Das heißt, dass jede Menge eine Vereinigung abgeschlossener Mengen ist!
+    \[
+        M = \bigcup_{p\in\R^n}\{p\}
+    \]
+\end{bem}
+\begin{lemma}
+    \(M\subseteq \R^n\) ist genau dann abgeschlossen, wenn für alle konvergenten Folgen \((a_n)_{n\in \N}\) in M auch \(\lim a_n \in M\) gilt.
+\end{lemma}
