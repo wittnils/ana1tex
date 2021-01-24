@@ -1,0 +1,98 @@
+\begin{defn}[Metrik und metrischer Raum] Sei $X$ eine Menge. Eine Abbildung $d:X\times X\to \R$ heißt Metrik, falls für alle $x,y,z\in X$ gilt
+    \begin{enumerate}[(i)]
+        \item $d(x,y) = 0 \Leftrightarrow x=y$
+        \item $d(x,y) = d(y,x)$
+        \item $d(x,z) \le d(x,y) + d(y,z)$
+    \end{enumerate}
+    Ein Tupel $(X,d)$ bestehend aus einer Menge $X$ und einer Metrik $d$ heißt metrischer Raum.
+\end{defn}
+\begin{defn}[Kugeln und Umgebungen]
+    Sei $(X,d)$ ein metrischer Raum, $a\in X$ und $r>0$, dann heißt 
+    \[
+    B_r(a) \coloneqq \{x\in X : d(x,a) < r\}    
+    \]
+    die offene Kugel um $a$ von Radius $r$. Eine Menge $U\subset X$ heißt Umgebung von $a\in X$, falls ein $r>0$ existiert mit $B_r(a)\subset U$. 
+\end{defn}
+\begin{defn}[Offene Mengen]
+    Eine Menge $O\subset X$ heißt offen, falls sie Umgebung jedes ihrer Punkte ist. Die Menge $\{O\in \mathfrak{P}(X):O \textrm{ offen}\}\subset \mathfrak{P}(X)$ heißt die (von $d$ induzierte) Topologie auf $X$.
+\end{defn}
+\begin{bsp}
+    Offene Kugeln $B_r(x)$ für $x\in X$ sind offen. Sei $y\in B_r(x)$ und $\epsilon \coloneqq r-d(x,y)$. Dann gilt $B_\epsilon(y)\subset B_r(x)$. Denn sei $z\in B_\epsilon(y)$, dann gilt:
+    \[
+    d(x,z) \le d(x,y) + d(y,z) < d(x,y) + r - d(x,y) = r   
+    \]
+    also $z\in B_r(x)$. 
+\end{bsp}
+\begin{defn}[Konvergenz] Eine Folge $x_n \in X, \ \forall n\in \N$ heißt konvergent gegen $x\in X$, falls 
+    \[
+    \forall \epsilon > 0 :\exists n_0 \in \N:\forall n\ge n_0 : d(x_n,x) < \epsilon     
+    \]
+    dann schreiben wir auch $\lim x_n = x$. 
+\end{defn}
+\begin{defn}
+    Eine Menge $A\subset X$ heißt abgeschlossen, falls $X\setminus A$ offen ist. 
+\end{defn}
+
+\begin{lemma}
+    Sei $(X,d)$ ein metrischer Raum, wir geben eine alternative Charakterisierung von Abgeschlossenheit an. Es gilt 
+    \begin{enumerate}
+        \item $A\subset X$ ist abgeschlossen genau dann, wenn 
+        \item Aus $x_n\in A, \ \forall n\in \N$ und $(x_n)$ konvergent, folgt $\lim x_n \in A$
+    \end{enumerate}    
+\end{lemma}
+\begin{proof}
+    Angenommen (i). Sei $A\subset X$ abgeschlossen und $x_n\in A, \ \forall n\in \N$ eine Folge mit $\lim x_n = x$. Angenommen $x\notin A$. Weil $X\setminus A$ offen ist, ist dann $X\setminus A$ eine Umgebung von $x$ und es gibt ein $r>0$ mit $B_r(x) \subset X\setminus A$. Nach Definition gilt für fast alle $n\in \N$: $d(x_n,x)<r$, also $x_n \in X\setminus A$ für fast alle $n\in \N$. Widerspruch. \\
+    Angenommen (ii). Sei $x\in X\setminus A$, angenommen es gäbe kein $r>0$ mit $B_r(x)\subset X\setminus A$, dann könnten wir für alle $k\in \N$ ein $x_k\in X$ wählen mit $d(x_k,x)<1/k$, dann gilt aber $\lim x_k=x$, also $x\in A$. Widerspruch.
+\end{proof}
+\begin{defn}[Cauchy-Folge]
+    Eine Folge $(x_n)$ heißt Cauchy-Folge genau dann, wenn 
+    \[
+    \forall \epsilon > 0 : \exists n_0 \in \N: \forall n,m\ge n_0 : d(x_n,x_m) < \epsilon    
+    \]
+\end{defn}
+\begin{lemma}[Jede konvergente Folge ist Cauchy]
+    Sei $(x_n)$ eine konvergente Folge, dann ist $(x_n)$ eine Cauchy-Folge.
+\end{lemma}
+\begin{proof}
+    Sei $\epsilon>0$ beliebig, dann gibt es $n_0\in \N$ s.d. für alle $n\ge n_0$ gilt $d(x_n,x)<\epsilon/2$. Daher folgt für alle $n,m\ge n_0$:
+    \[
+    d(x_n,x_m) \le d(x_n,x) + d(x,x_m) \le \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon    
+    \]
+\end{proof}
+\begin{defn}
+    Ein metrischer Raum $(X,d)$ heißt vollständig, wenn jede Cauchy-Folge eine konvergente Folge ist. 
+\end{defn}
+\begin{bsp} Sei $\vert\cdot\vert$ der herkömmliche Absolutbetrag auf $\Q$, dann ist $(\Q,\vert\cdot\vert)$ ein metrischer Raum, der nicht vollständig ist. 
+\end{bsp}
+\begin{defn}[Stetigkeit]
+    Seien $(X,d_X), (Y,d_Y)$ metrische Räume. Eine Abbildung $f:X\to Y$ heißt stetig im Punkt $a\in X$, falls 
+    \[
+    \forall \epsilon > 0: \exists \delta > 0 : \forall b\in X : (d_X(a,b)<\delta \implies d_Y(f(a),f(b)) < \epsilon )    
+    \] $f$ heißt stetig, falls $f$ in jedem Punkt von $X$ stetig ist. 
+\end{defn}
+\begin{lemma}
+    Eine Funktion $f:X\to Y$ zwischen metrischen Räumen ist (i) stetig im Punkt $x\in X$ genau dann, wenn (ii) für alle Folge $(x_n)$ in $X$ mit $\lim x_n =x$ gilt $\lim f(x_n) = f(x)$.
+\end{lemma}
+\begin{proof}
+    Angenommen $f$ ist steitig. Sei $(x_n)$ eine Folge mit $\lim x_n =x$. Sei $\epsilon>0$ beliebig, dann gibt es ein $\delta >0$ mit 
+    \[
+    d_X(x,y) < \delta \implies d_Y(f(x),f(y))<\epsilon    
+    \]Es gibt ein $n_0\in \N:\forall n\ge n_0 : d(x_n,x)<\delta$, dann ist aber $d_Y(f(x_n),f(x))<\epsilon$ für alle $n\ge n_0$, also $\lim f(x_n) =f(x)$. \\
+    Angenommen (ii).  Angeommen $f$ wäre nicht stetig, dann gäbe es ein $\epsilon>0$ sodass für alle $\delta >0$ gilt
+    \[
+    d(x,y) < \delta, \quad \text{und: } d_Y(f(x),f(y)) \ge \epsilon    
+    \] 
+    Dann gibt es aber zu $\delta = 1/n$ stets ein $x_n\in X$ mit $d_X(x_n,x)<1/n$ und $d_Y(f(x_n),f(x))\ge \epsilon$. Widerspruch.
+\end{proof}
+\begin{lemma}
+    Sei $f:X\to Y$ eine Abbildung zwischen metrischen Räumen. Dann sind äquivalent
+    \begin{enumerate}[(i)]
+        \item $f$ ist stetig auf ganz $X$
+        \item Für alle $x\in X$ und alle Folgen $(x_n)\subset X$ mit $\lim x_n =x$ gilt $\lim f(x_n) = f(x)$.
+        \item Urbilder offener Mengen sind offen.
+    \end{enumerate} 
+    \begin{proof}
+        Dass (i) und (ii) äquivalent sind haben wir schon gesehen. \\ (i) $\Rightarrow$ (iii): Sei $V\subset Y$ offen, wir müssen zeigen, dass $O\coloneqq f^{-1}(V) \subset X$ offen ist. Sei also $x\in O$ beliebig, dann ist $f(x)\in V$ und es gibt ein $\epsilon>0$ mit $B_\epsilon(f(x))\subset V$, weil $V$ offen ist. Nach (i) gibt es dann aber ein $\delta >0$ mit \[ f(B_\delta(x))\subset B_\epsilon(f(x))\subset V \implies B_\delta(x)\subset O\]
+        (iii) $\Rightarrow$ (i): Sei $\epsilon > 0$ beliebig. Die Menge $U\coloneqq f^{-1}(B_\epsilon(f(x))\subset X$ ist offen nach (iii). Insbesondere ist $x\in U$. Daher ist $U$ eine Umgebung von $x$ nach Definition und es gibt ein $\delta > 0$ mit $B_\delta(x)\subset U$. Für dieses $\delta>0$ gilt dann $f(B_\delta(x))\subset f(U)= B_\epsilon(f(x))$.
+    \end{proof}
+\end{lemma}

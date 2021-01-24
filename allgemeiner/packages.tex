@@ -1,0 +1,41 @@
+% tikz-package (Commutative Diagramms)
+\setlength{\parindent}{0pt}
+\usepackage{tikz-cd}
+\tikzcdset{
+arrow style=tikz,
+diagrams={>={Straight Barb[scale=0.8]}}
+}
+
+% Standard-Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage{enumerate}
+\usepackage{microtype}
+\usepackage{extpfeil}
+\usepackage{ngerman}
+\usepackage{gauss}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+% amsthm-Formatierung und Ändefrungen
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{kor}{Korrollar}
+\newtheorem{satz}{Satz}
+\newtheorem{lemma}{Lemma}
+\renewcommand*{\proofname}{Beweis}
+\theoremstyle{remark}
+\newtheorem*{bem}{\textbf{Bemerkung}}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem*{bsp}{Beispiel}
+\newtheorem*{defnstar}{Definition}
+
+% Äußere Potenz 
+\newcommand{\extp}{\@ifnextchar^\@extp{\@extp^{\,}}}
+\def\@extp^#1{\mathop{\bigwedge\nolimits^{\!#1}}}
+\makeatother
+
+\usepackage{booktabs}
