@@ -156,3 +156,28 @@ der (abgeschlossene) Ball um $a$ von Radius $r$.
 \begin{defn}[Innere/ Abschluss]
     Das Innere $\interior{M}$ einer Menge $M\subseteq R^n$ ist die Menge $\interior{M} \coloneqq M \setminus \partial M$. Der Abschluss $\exterior{M}$ von $M$ ist $\exterior{M}\coloneqq M\cup \partial M$.
 \end{defn}
+\begin{lemma}
+    \begin{enumerate}
+        \item $\interior{M}$ ist die größte offene Menge, die in $M$ enthalten ist.
+        \[
+            \interior{M} \coloneqq \bigcup \{U\subseteq \R^n \mid U\mathrm{\ offen\ und\ } U\subseteq M\}
+        \]
+        Insbesondere ist $\interior{M}$ offen.
+        \item $\exterior{M}$ ist die kleinste abgeschlossene Menge, die $M$ enthält:
+        \[
+            \partial{M} \coloneqq \bigcap \{A\subseteq \R^n \mid A\mathrm{\ abgeschlossen\ und\ } A\supseteq M\}.
+        \]
+        Insbesondere ist $\exterior{M}$ abgeschlossen.
+    \end{enumerate}
+\end{lemma}
+\begin{kor}
+    Es sei $M\subseteq \R^n$. Dann gilt:
+    \begin{enumerate}
+        \item $M$ offen $\iff M = \interior{M}$
+        \item $M$ abgeschlossen $\iff M = \exterior{M}$.
+    \end{enumerate}
+\end{kor}
+\begin{bem}
+    Insbesondere gilt: $\interior{\interior{M}} = \interior{M}$ und $\exterior{\exterior{M}}=\exterior{M}$.\\
+    Trotzdem ist $\partial\interior{M} = \partial(M\setminus\partial M) \neq \partial M$ und $\exterior{\interior{M}} \neq \interior{\exterior{M}}$ möglich.
+\end{bem}
