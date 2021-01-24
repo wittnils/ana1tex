@@ -1,6 +1,6 @@
 \section*{Suprema und Infima, Beschränktheit}
 \begin{defn}
-    Eine Menge $M\subset \R^n$ heißt beschränkt, falls es ein $r\in \R^+$ gibt mit $B_r(0)\supset M$. Im Fall $n=1$ heißt das nichts anderes als $\vert x\vert < r$ für alle $x\in \R$.
+    Eine Menge $M\subset \R^n$ heißt beschränkt, falls es ein $r\in \R^+$ gibt mit $B_r(0)\supset M$. Im Fall $n=1$ heißt das nichts anderes als $\vert x\vert < r$ für alle $x\in M$.
 \end{defn}
 \begin{defn}[Supremum und Kriterium]
     Sei $\emptyset\neq M\subset \R$ nach oben beschränkt. Dann definieren wir $\sup M$ als die kleinste obere Schranke von $M$. Wir haben
@@ -18,7 +18,32 @@ Das Ganze funktioniert für $\inf M$ analog.
 \begin{bem}
     $\Q$ ist nicht supremums-vollständig, denn die Menge $\{x\in \Q:x^2<2\}\subset \Q$ hat kein Supremum in $\Q$. 
 \end{bem}
-\section*{Folgen}
+\subsection*{Was ist der Unterschied zwischen Maximum und Supremum?}
+\begin{defn}[Maximum]
+    Sei $M\subset \R$ nicht leer, dann heißt $x\in \R$ Maximum von $M$, falls 
+    \begin{enumerate}[(i)]
+        \item $x\in M$.
+        \item $\forall y\in M: x\ge y$. 
+    \end{enumerate}
+    Wir schreiben dann $x = \max M$. Für Minimum analog. 
+\end{defn}
+Nicht jede nach oben beschränkte Menge $M\subset \R$ besitzt ein Maximum. Zum Beispiel betrachte $A\coloneqq \{ 1- 1/n : n\in \N\}\subset \R$. Dann hat $A$ kein Maximum, denn für alle $x\in A$ existiert ein $n\in \N:x=1-1/n$, aber 
+\[
+x= 1-\frac{1}{n} < 1-\frac{1}{n+1} \in A    
+\]
+also kein $x\in M$ Maximum von $A$. $A$ besitzt aber ein Supremum, nämlich ist $\sup A =1$, denn: sei $\epsilon > 0$ beliebig, dann gibt es ein $n\in \N$ mit 
+\[
+\frac{1}{n} < \epsilon    
+\]
+daher gilt 
+\[
+1-\frac{1}{n} > 1-\epsilon \iff 1-\frac{1}{n} + \epsilon > 1    
+\]
+also ist $\sup A=1$. 
+\section*{Folgen, Limes superior und Limes inferior}
+Anschaulich gesprochen betrachten wir immer eine Menge zusammen mit einem Konvergenzbegriff. Zum Beispiel ist 
+die Aussage jede Cauchy-Folge konvergiert als Aussage über $\Q$ falsch über $\R$ jedoch wahr. Man sagt dann $\Q$ ist nicht vollständig und 
+$\R$ ist vollständig. 
 \begin{defn}[Folge und Konvergenz]
     Eine Abbildung $a:\N\to \C, \ n\mapsto a(n) \eqqcolon a_n$ heißt Folge. Eine Folge heißt komplexwertige
     konvergent mit Grenzwert $a\in \C$ genau dann, wenn 
@@ -30,6 +55,15 @@ Das Ganze funktioniert für $\inf M$ analog.
         \lim_{n\to \infty} a_n \equiv \lim a_n \coloneqq a
     \]
 \end{defn}
+\begin{defn}
+    Sei $(a_n)$ eine Folge in $\C$. $a\in \C$ heißt Häufungspunkt von $(a_n)$, falls 
+    \[
+    \forall \epsilon>0 : \textrm{es gibt unendlich viele } n\in \N : \vert a_n - a \vert < \epsilon.    
+    \] 
+\end{defn}
+\begin{bem}
+    Der Grenzwert einer Folge ist sein (einziger) Häufungspunkt. Es gilt: $a\in \C$ ist Häufungspunkt von $(a_n)$ genau dann, wenn es eine Teilfolge $(a_{n_k})$ gibt mit $\lim_{k\to\infty} a_{n_k} = a$. 
+\end{bem}
 \begin{defn}[Cauchy-Folge]
     Eine Folge $(a_n)$ in $\C$ heißt Cauchy-Folge genau dann, wenn 
     \[
@@ -42,7 +76,30 @@ Das Ganze funktioniert für $\inf M$ analog.
     \]
     hat ausschließlich rationale Folgeglieder und ist konvergent, aber konvergiert nicht in $\Q$.
 \end{bem}
-
 \begin{lemma}
     Eine monoton fallende/wachsende nach unten/oben beschränkte Folge $(a_n)$ ist konvergent. 
 \end{lemma}
+\begin{defn}
+    Eine Folge $(a_n)$ heißt bestimmt divergent gegen $+\infty$, falls gilt 
+    \[
+        \forall K \in \R :\exists n_0 \in \N: \forall n\ge n_0 : a_n \ge K
+    \]
+\end{defn}
+Sei $(a_n)$ eine bestimmt gegen $+\infty$ divergente Folge, dann gilt $a_n >0$ für fast alle 
+$n\in \N$ und $\lim 1/(a_n) = 0$. Sei andererseits $(b_n)$ eine Nullfolge mit $b_n>0$ für fast alle $n\in \N$, dann 
+gilt, dass die Folge $1/(b_n)$ bestimmt gegen $+\infty$ divergiert.  
+\begin{defn}
+    Sei $(a_n)$ eine beschränkte Folge, d.h. es gibt ein $S\in \R$ mit $\vert a_n\vert < S, \ \forall n\in \N$. Wir definieren
+    \begin{align*}
+        B_n &\coloneqq \sup\{a_k : k\ge n\} \\
+        b_n &\coloneqq \inf\{a_k : k \ge n\}
+    \end{align*}
+    Dann sind $(B_n)$ und $(b_n)$ monoton fallend/wachsend und beschränkt, daher konvergent und wir schreiben 
+    \begin{align*}
+        \limsup_{n\to\infty} a_n &\coloneqq \lim_{n\to \infty} B_n \equiv \inf_{n\in \N} \sup_{k\ge n} a_k \\
+        \liminf_{n\to \infty} a_n &\coloneqq \lim_{n\to\infty} b_n \equiv \sup_{n\in \N} \inf_{k\ge n} a_k
+    \end{align*}
+\end{defn}
+Nicht jede beschränkte Folge hat einen Grenzwert. Aber jede beschränkte Folge hat einen Limes superior/Limes inferior. 
+Sei $(a_n)$ beschränkte Folge. Falls gilt $\limsup a_n = \liminf a_n$, dann ist $(a_n)$ konvergent und es gilt $\lim a_n = \limsup a_n = \liminf a_n$. \\
+Man kann zeigen, dass das $\limsup$/$\liminf$ einer beschränkten Folge gerade das Supremum/Infimum seiner Häufungspunkte ist.
