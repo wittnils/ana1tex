@@ -3,6 +3,7 @@
     Es sei $\emptyset\neq D\subset \R^n$. Eine reellwertige bzw. komplexwertige Funktion auf $D$ ist eine Abbildung $f:D\to \R$ bzw. $f:D\to \C$.
     Für zwei Funktionen $f,g:D\to \C$ (oder $\R$) definieren wir für alle $x\in D$
     \begin{align*}
+        %Jannick stinkt
         (f+g)(x) &\coloneqq f(x)+g(x) \\
         (f-g)(x) &\coloneqq f(x)-g(x) \\
         (f\cdot g)(x) &\coloneqq f(x)\cdot g(x) 
@@ -181,3 +182,123 @@ der (abgeschlossene) Ball um $a$ von Radius $r$.
     Insbesondere gilt: $\interior{\interior{M}} = \interior{M}$ und $\exterior{\exterior{M}}=\exterior{M}$.\\
     Trotzdem ist $\partial\interior{M} = \partial(M\setminus\partial M) \neq \partial M$ und $\exterior{\interior{M}} \neq \interior{\exterior{M}}$ möglich.
 \end{bem}
+
+\subsection{Kompaktheit und Existenz von Extrema}
+\begin{defn}[Beschränkt/ Kompakt]
+    \begin{enumerate}
+        \item Eine Menge $M\subseteq\R^n$ heißt beschränkt, falls gilt:
+        \[
+            \exists s>0:\ M\subseteq\B_s(0).
+        \]
+        \item Eine Menge $M\subseteq\R^n$ heißt kompakt, falls jede Folge in M eine konvergente Teilfolge mit Limes in M besitzt.
+    \end{enumerate}
+\end{defn}
+\begin{satz}[Heine-Borel]
+    Eine Teilmenge des $\R^n$ ist genau dann kompakt, wenn sie beschränkt und abgeschlossen ist.
+\end{satz}
+\begin{satz}
+    Es sei $\emptyset\neq K\subseteq \R$ kompakt. Dann existiert $\min K$ und $\max K$.
+\end{satz}
+\begin{satz}
+    Stetige Bilder von kompakten Mengen sind kompakt. Es sei $K\subseteq \R^n$ kompakt und $f:K\to\R^l$ stetig. Dann ist auch $f(K)\subseteq\R^l$ kompakt.
+\end{satz}
+\begin{bem}
+    Da Einschränkungen stetiger Abbildungen stetig sind, gilt folgende Verallgemeinerung: $D\subseteq\R^n$, $f:D\to\R^l$ stetig. Es sei $K\subseteq \R^n$ kompakt und $K\subseteq D$.
+    Dann ist $f(K)\subseteq \R^l$ ebenfalls kompakt.
+\end{bem}
+\begin{kor}[Existenz von Extrema]
+    Es sei $\emptyset\neq K \subseteq \R^n$ kompakt und $f:K\to\R$ stetig. Dann nimmt $f$ ein Maximum und ein Minimum an.
+    Das heißt:
+    \[
+        \exists x_{min}, x_{max}\in K
+    \]
+    mit:
+    \[
+        \forall x\in K: \min{f} \coloneqq f(x_{min})\leq f(x)\leq f(x_{max}) \eqqcolon \max{f}
+    \]
+\end{kor}
+\subsection{Zusammenhang und Zwischenwertsatz}
+\begin{defn}
+    Eine Menge $M\subseteq \R^n$ heißt zusammenhängend, falls es keine offenen Mengen $U_1, U_2\subseteq \R^n$ gibt, so dass folgendes gilt:
+    \begin{enumerate}
+        \item $M\cap U_1 \neq \emptyset\neq M\cap U_2$
+        \item $M = (M\cap U_1)\cup (M\cap U_2)$
+        \item $(M\cap U_1)\cap (M\cap U_2) = \emptyset$
+    \end{enumerate}
+    Äquivalente Formulierung: Für alle nicht-leeren, disjunkten und offenen Mengen $U_1, U_2\subseteq \R^n$ gilt:
+    \[
+        M\subseteq U_1\cup U_2 \implies M\subseteq U_1 \lor M\subseteq U_2.
+    \]
+\end{defn}
+\begin{satz}
+    Es sei $\emptyset\neq M\subseteq \R$. Dann gilt:
+    \[
+        M\mathrm{\ ist\ ein\ Intervall\ } \iff \forall a,b\in M\land a<b: [a,b]\subseteq M.
+    \]
+\end{satz}
+\begin{satz}
+    $M\subseteq \R$ ist genau dann zusammenhängend, wenn $M$ ein Intervall ist.
+\end{satz}
+\begin{defn}
+    Es sei eine Menge $D\subseteq \R^n$ gegeben.
+    Eine Menge $M\subseteq D$ heißt offen in $D$ (bzw. relativ offen),
+    falls es eine offene Menge $U\subseteq \R^n$ mit
+    \[
+        M = D\cap U
+    \] gibt.
+    Analog: $M$ ist abgeschlossen in $D$, falls
+    \[
+        M = D\cap A
+    \] mit $A\subseteq \R^n$ abgeschlossen.
+\end{defn}
+\begin{lemma}
+    $M\subseteq D$ ist genau dann offen in $D$, wenn gilt:
+    \[
+        \forall x\in M \exists r>0: D\cap\B_r(x)\subseteq M.
+    \]
+\end{lemma}
+\begin{lemma}{Stetigkeit = Urbilder offener Mengen sind offen}
+    Es sei $f:D\to \R$, $D\subseteq \R^n$, gegeben. $f$ ist genau dann stetig, wenn folgendes gilt:
+    \[
+        \forall U\subseteq \R \mathrm{\ offen\ }: f^{-1}(U)\subseteq D \mathrm{\ ist\ offen\ in\ } D.
+    \]
+\end{lemma}
+\begin{satz}{Stetige Bilder zusammenhängender Mengen sind zusammenhägend}
+    Es sei $f:D\to \R$ stetig und $D\subseteq\R^n$ zusammenhängend.
+    Dann ist auch $f(D)\subseteq \R$ zusammenhängend.
+\end{satz}
+\begin{bem}
+    Genau wie im Satz zu \textit{Stetige Bilder von kompakten Mengen sind kompakt} gilt dies allgemeiner:
+    \[
+        f:M\to \R \mathrm{\ stetig}, D\subseteq M\mathrm{\ zsh.\ }\implies f(D) \mathrm{\ zsh}.
+    \]
+\end{bem}
+\begin{kor}{Zwischenwertsatz}
+    Es sei $f: [a,b]\to \R$ stetig. Dann nimmt $f$ alle Werte zwischen $f(a)$ und $f(b)$ an.
+    D.h., im Fall $f(a)\leq f(b)$ gilt:
+    \[
+        [f(a),f(b)]\subseteq f([a,b]).
+    \]
+    Im Fall $f(a)\geq f(b)$ gilt:
+    \[
+        [f(b),f(a)]\subseteq f([a,b]).
+    \]
+\end{kor}
+%\begin{figure}
+%    \centering
+%    \begin{tikzpicture}[domain=0:4]
+%        \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
+%        \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+%        \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+%        \draw[color=blue] plot[id=x**2] function{x^2}
+%        node[right] {$f(x) = \sin x$};
+%    \end{tikzpicture}
+%\end{figure}
+\begin{defn}
+    $f:[a,b]\to\R$ heißt (streng) monoton steigend, falls gilt:
+    \begin{align*}
+        \forall x,y\in[a,b]:\ &x\leq y \implies f(x)\leq f(y)\\
+        \mathrm{(\glqq streng\grqq}:\ &x<y\implies f(x) \leq f(y)\mathrm{)}.
+    \end{align*}
+    Analog wird (streng) monoton fallend definiert.
+\end{defn}

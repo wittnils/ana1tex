@@ -29,6 +29,9 @@ all: $(PROJNAME).pdf
 %.tex: %.dat
 	./dat2tex $< > $@
 
+%.table: %.gnuplot
+	gnuplot $< && mv $(@F) $(BUILDDIR)/
+
 # MAIN LATEXMK RULE
 
 # -pdf tells latexmk to generate PDF directly (instead of DVI).
@@ -39,12 +42,12 @@ all: $(PROJNAME).pdf
 # missing file reference and interactively asking you for an alternative.
 
 $(PROJNAME).pdf: $(PROJNAME).tex
-	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -output-directory=$(BUILDDIR) -use-make $<
+	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode --shell-escape --enable-write18" -output-directory=$(BUILDDIR) -use-make $<
 
 cleanall:
 	latexmk -C -output-directory=$(BUILDDIR)
 
 clean:
-	latexmk -c -output-directory=$(BUILDDIR)
+	latexmk -c -output-directory=$(BUILDDIR) && cd $(BUILDDIR) && rm *.table *.gnuplot
 
 #rm -v $(BUILDDIR)/$(PROJNAME).aux $(BUILDDIR)/$(PROJNAME).log $(BUILDDIR)/$(PROJNAME).fls $(BUILDDIR)/$(PROJNAME).fdb_latexmk
